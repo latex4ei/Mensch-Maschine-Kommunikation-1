@@ -12,90 +12,33 @@
 % ======================================================================
 
 % Dokumentklasse (Schriftgröße 6, DIN A4, Artikel)
-\documentclass[6pt,a4paper]{scrartcl}
+\documentclass[german,color,6pt]{latex4ei/latex4ei_sheet}
+\usepackage{multirow}
 
-
-% Pakete laden
-\usepackage[utf8]{inputenc}		% Zeichenkodierung: UTF-8 (für Umlaute)   
-\usepackage[german]{babel}		% Deutsche Sprache
-\usepackage{multicol}			% ermöglicht Seitenspalten  
-\usepackage{longtable}
-\usepackage{booktabs}			% bessere Tabellenlinien
-\usepackage{graphicx}			% Zum Bilder einfügen benötigt
-\usepackage{pbox}				% Intelligent parbox: \pbox{maximum width}{blabalbalb \\ blabal}
-\usepackage{../../packages/scientific}	% Eigenes Paket
-\usepackage{../../packages/latex4ei}
-\usepackage{parskip}
-\usepackage{scrtime}
-\usepackage{titlesec}
-\usepackage{color}				% Ermöglicht farbigen Text
-\usepackage{tabularx}			% Tabellen mit Zeilenumbruch
-\usepackage{tikz}				% Alle möglichen Zeichnungen
-\usepackage{multirow}                           %zeilenübergreifender Text
-
-% .:: Seitenlayout und Ränder
-% ======================================================================
-\usepackage{geometry}
-\geometry{a4paper,landscape, left=6mm,right=6mm, top=0mm, bottom=3mm,includeheadfoot} 
+% Definitionen
 \definecolor{darkgreen}{rgb}{0,0.5,0}
+\DeclareTextFontCommand{\emph}{\bfseries}
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
 
-% .:: Kopf- und Fußzeile
-% ======================================================================
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
+\makeatother
 
-   \fancyfoot[C]{von Fabian Göttel und Hendrik Böttcher}
-   \renewcommand{\headrulewidth}{0.0pt} %obere Linie ausblenden
-   \renewcommand{\footrulewidth}{0.1pt} %obere Linie ausblenden
-
-   \fancyfoot[R]{Stand: \today \ um \thistime \ Uhr \qquad \thepage}
-   \fancyfoot[L]{Homepage: www.latex4ei.de -- Fehler bitte sofort an info@latex4ei.de}
-	
-% Schriftart SANS für bessere Lesbarkeit bei kleiner Schrift
-\renewcommand{\familydefault}{\sfdefault} 
-% Array- und Tabellenabstände vergrößern
-\renewcommand{\arraystretch}{1.2}
-
-\renewcommand{\vec}[1]{\ensuremath{\boldsymbol {#1}}}
-\renewcommand{\ma}[1]{\ensuremath{\boldsymbol {#1}}}
-
-\renewcommand{\emph}[1]{\textbf{#1}}
-
-
-% .:: Überschriften anpassen
-% ======================================================================
-\definecolor{sectioncolor}{RGB}{40,40,128}
-
-%\titleformat{ command }[ shape ]{ format }{ label }{ sep }{ before-code }[ after-code ]
-\titleformat{\section}{\Large \bfseries}{\thesection .}{0.5em}{\color{sectioncolor}}[\color{sectioncolor} \hrule \hrule]
-\titleformat{\subsection}{\large \bfseries}{\thesubsection .}{0.3em}{}[ ]
-
-%\titlespacing{Überschriftart}{keine Ahnung}{Abstand oberhalb}{Abstand unterhalb}
-\titlespacing{\section}{0em}{1.0em}{0.1em}
-\titlespacing{\subsection}{0em}{0.2em}{-0.4em}
-\titlespacing{\subsubsection}{0em}{0em}{-0.5em}
-
-
+\title{Mensch-Maschine-Kommunikation 1}
+\author{Fabian Göttel und Hendrik Böttcher}	
 
 % Dokumentbeginn
 % ======================================================================
 \begin{document}
 
-
-% Aufteilung in Spalten
-\vspace{-3mm}
-\begin{multicols*}{4}
-	\parbox{2.3cm}{
-		\includegraphics[height=1.4cm]{../img/Logo.pdf}		
-	}
-	\parbox{4cm}{
-		\emph{\Large{Mensch-Maschine-Kommunikation 1}}
-	}
-\vspace{-3mm} % Man muss optimieren wos nur geht ;)
 % -------------------------------------------
 % | 		MMK1					|
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\maketitle
+
 %=======================================================================
 
 %\paragraph{Allgemeines}
@@ -104,13 +47,13 @@
 %Oktave: "`Frequenzverhältnis 1:2"`
 
 \section{Ein-/Ausgabegräte}
-\symbolbox{
-Datenraten der MMK deutlich unter den "`normalen"' Datenraten. (1oo - 3oo.oo KByte /s vs. 0.01 (Tastatur) - 40 (hören) und 2o.ooo (sehen)(beides nur Input)). 
-}
+\begin{symbolbox}
+Datenraten der MMK deutlich unter den "`normalen"' Datenraten. (1oo - 3oo.oo KByte/s vs. 0.01 (Tastatur) - 40 (hören) und 2o.ooo (sehen)(beides nur Input)).
+\end{symbolbox}
 
 \subsection{Eingabegeräte}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Tastatur}
 QWERTZ vs. Dvorak (typewriting vs. Ergonomie)
 \paragraph{Row-Scanning} Tasten in einer Matrix angeordnet. z.B. 6 $\times$ 17. Zur Abfrage werden die Spalten seriell auf high gelegt und die horizontale überprüft.
@@ -134,9 +77,9 @@ $\Delta t_{\max} * r * N_E = 1$
 \paragraph{Prelleffekt}
 Ursache: schneller Pegelwechsel zu Beginn/Ende eines Schaltvorganges. \\
 Lösung: Entprellschaltung durch RS-Flipflop, oder Totzeit (via Controller $\Ra$ Erhöhung typematic delay)
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Maus}
 
 \paragraph{Opto-mechanische Maus} 
@@ -150,14 +93,14 @@ Auf dem Rücken liegende opto-mechanische Maus.
 
 \paragraph{Spacemouse}
 3D Eingabegerät, Puck der sich drehen, neigen, ziehen und schieben, Dehnungsmesstreifen Controller Computer
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Joystick}
 auf Bodenplatte befestigter Stick, analog(poti), digital(taster), isometrisch(DMS) (keine Auslenkung) 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Touchscreen - TS}
 Abstand zwischen Darstellungsebene und Berührungseben $\Ra$ Parallaxenprobleme, allgemein robust (keine beweglichen Teile)
 
@@ -171,14 +114,10 @@ Piezoelketrische Sender/Empfänger, Signalburst im MHz Bereich wird vom Sender i
 
 \vspace{0.3em}
 
-\tablebox{
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
-		\ctrule
+\begin{tablebox}{ll}
 		$x_1 =  {\frac{U_{x1} + u_{y2 | x}}{U_{x1} - U_{x2}}} x$ & $y_1 = \frac{U_{y1} + U_{x2 | u}}{U_{y1} - U_{y2}}y$ \\
 		$ x_2 = \frac{U_{x2} + U_{y2 | x}}{U_{x2} - U_{x1}} x$ & $y_2 = \frac{U_{y2} + U_{x2 | y}}{U_{y2} - U_{y1}} y$ \\
-		\cbrule
-	\end{tabular*}
-}
+\end{tablebox}
 
 \paragraph{Kapazitiver TS}
 leitend beschichtete Glasplatte; Strom an 4 Ecken; Finger absorbiert Strom; Berührungsposition aus Verhältnissen der Ströme (und R der Glasplatte); 
@@ -187,9 +126,9 @@ leitend beschichtete Glasplatte; Strom an 4 Ecken; Finger absorbiert Strom; Ber�
 an 4 Ecken Piezoelement; abfallende Spannungen $\Ra$  Postion; Summe der abfallenden Spannungen $\Ra$ Druck; 
 
 \paragraph{Grafiktablett} elmag Abtastutmechanismus, Gitter von Drähten, Multiplex, Kabel an Griffel / Schwingkreis in Stift (passiv); 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Scanner} opt. Abtastung; Orts- und Helligkeitsdiskretisierung; Farbe in 3 Werten; 3*8Bit $\Ra$ 24 Bit Farbtiefe; 
 
 \paragraph{CCD} Matrix, lichtempfindliche SiZellen; Lichtquant; sequentielle Auslesung (Spg an Nachbarzellen) limitiert Auslesegeschwindigkeit; Blooming-Effekt (überbelichtete Zellen $\Ra$ überb. Streifen in Ldgstransportrichtung); 
@@ -199,22 +138,22 @@ an 4 Ecken Piezoelement; abfallende Spannungen $\Ra$  Postion; Summe der abfalle
 \paragraph{Flachbettscanner} gläserne Auflagefläche; CCD; zeilenweise Abtastung; bis 2k4 dpi; kostengünstig; versch. Vorlagedicken; 
 
 \paragraph{Trommelscanner} bis 10k dpi; Vorlage auf Trommel spannen; kollimierter Lichtstrahl; Spiegeleinheit; Linsen-Spiegelsystem; PMT/Lichtstrahl; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Videokamera}
 Früher Röhren; CCD; 1/3 Chip (Farbiflter/Prisma); kostengünstig/Auflösung \& Farbechtheit; progressiv(Vollbild / Abtastzeitpunkt) oder interlace (Halbbild / Ab); Zukunft: IC, schneller Auslesung, Preis, hohe Dynamik; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Mikrophon}
 Luftschall in elek. Signal; versch. Richtcharakterisitigken; Tauchspule/ Bändchen/ Kondensator/ Kohle/ Piezo; 
-}
+\end{sectionbox}
 
 
 \subsection{Ausgabegeräte}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Video}
 \paragraph{Röhrenbildschirm} CRT; Helligkeit Geschw.Variation; farbe: 3 El.Kanonen treffen auf RGB Phosphore; Lochmaske; hohe Farbsättigung \& Farbbereich \& Kontrast; Flimmern durch raschen Helligkeitsverlust; Interlacing reduziert Flimmern; kugelförmige Wölbung; 
 
@@ -225,44 +164,40 @@ Luftschall in elek. Signal; versch. Richtcharakterisitigken; Tauchspule/ Bändch
 \paragraph{aktives TFT-LCD}Thin Film Transistor; TF / Pixel; source zeilen, gate spalten verbunden; verschiedene Grausuften; Polarisation rascher als passive; 
 
 \paragraph{Plasma Display} Plasma = fast vollständig ionisiertes Gas; Drahtgitter zur Plasmazellensteuerung; Bild $\Ra$ Zellen werden gezündet; UV $\Ra$ Szintillatoren $\Ra$ sichtbares (monochromatisches) Licht; hohe Farbbrillianz/Sättigung; versch. Helligkeit durch PWM; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Audio}
 \paragraph{Lautsprecher} Schwingspule, Spinne, berüngsfrei zwischen Dauermagnet; 
-}
+\end{sectionbox}
 
 
 \section{Menschliche Sinnesorgane}
-\symbolbox{
+\begin{symbolbox}
 Auge 87\% , Ohr 10\% , Rest 3\%;
-}
+\end{symbolbox}
 
 \subsection{Sehen}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Das Auge}
 Hornhaut; Pupille; Iris (hell/dunkel Adaption); Zilliarmuskel; Linse (Fokus); Glaskörper; Retina (optisch aktive Elemente, $1-2*10^8$ Rezeptoren) mit Fovea centralis (höchste Zapfendichte) und blindem Fleck; Sehnerv($10^6$ Nervenfasern); Aderhaut; Lederhaut; 
 
-\tablebox{
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
-		\ctrule
+\begin{tablebox}{ll}
 		$\tan \left( \frac{\beta}{ 2} \right) = \frac{h}{2l} = \frac{h_z}{xd_{\text{Auge}}}$ & $h_z = \sqrt{\frac 1 D}$\\
 		$D_{\max} \approx 1,4 * 10^{11} m^{-2}$ & $D_{\min} \approx 5 * 10^9 m^{-2}$\\
-		\cbrule
-	\end{tabular*}
-}
+\end{tablebox}
+
 \includegraphics[width=5.4cm]{../img/Auge.png}
 
 \paragraph{Prinzip des Sehens}
 ca. 380-750nm ($4*10^{14} Hz - 7,5 * 10^{14} Hz \approx$ 1 Oktave;  $\lambda = \frac c f$); 100dB; spektr. Empf. je nach Adaption: Tagsehen / photopische Sehen / Farbempfinden bzw. Nachtsehen / scotopische Sehen; Sakkade $\Ra$ fovea centralis; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Psychooptische und physik. Messgrößen}
 1cd $\cong$ Lichtstärke eines monochromatischen strahles mit $f = 5.4 \cdot 10^{14} Hz$ und der Strahlungsstärke von $\frac{1}{683} \frac{W}{s r}$
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}llll@{}}
-		\ctrule
+	\begin{tablebox}{llll}
 		\multicolumn{2}{c}{\emph{Psychooptik}} &\multicolumn{2}{c}{\emph{Physik}}\\
 		Bezeichnung & Einheit & Bezeichnung & Einheit\\
 		\cmrule
@@ -274,40 +209,41 @@ ca. 380-750nm ($4*10^{14} Hz - 7,5 * 10^{14} Hz \approx$ 1 Oktave;  $\lambda = \
 		Belichtung $H$ & $lx \cdot s$ & Energiedichte $w$ & $\frac{J}{m^2}$\\
 		\cmrule
 		\multicolumn{4}{c}{Lichtausbeute $\mu = \frac{Lichtstrom}{Stahlungsleistung} 1 \frac{lm}{W}$}\\
-		\cbrule
-	\end{tabular*}
-}
+	\end{tablebox}
+\end{sectionbox}
  
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Farbsehen}
 Stäbchen sw, hohe Konz($1.2 * 10^8$), Nachtsehen; S-Zapfen Blau 430nm, M-Zapfen Grün 530nm, L-Zapfen Rot 560nm, 1:10:10,  insg. $7 *10^6$; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Gesichtsfeld}
 volles Farbemfpinden nur im Überlappungsbereich der Farbzonen; primäres Gesichtsfeld horiz. $-15^\circ < \theta < + 15^\circ $ und vert. $-17^\circ < \phi < + 14 ^\circ $; 3D: $-55^\circ < \theta < 55^\circ$
-}
+\end{sectionbox}
 
 
-\sectionbox{
+\begin{sectionbox}
 	\subsection{Farbmischung}
-	\topicbox{Arten der Farbmischung}{
-	\emph{Additiv} aktive Primärstrahler; RGB; \\
-	\emph{Subtraktiv} CMY ; Absorption best. Prim.farben; Ausgegangen wird von einer weiß beleuchteten Oberfläche; 
-}
+	\begin{tablebox}{p{\textwidth}}
+		\emph{Arten der Farbmischung} \\ % topicbox
+		\cmrule
+		\emph{Additiv} aktive Primärstrahler; RGB; \\
+		\emph{Subtraktiv} CMY ; Absorption best. Prim.farben; Ausgegangen wird von einer weiß beleuchteten Oberfläche; 
+	\end{tablebox}
 
 \paragraph{Farbwürfel}Grundfarben, Mischungen, s/w definieren Ecken; $(R,G,B)^T = (1,1,1)^T - (C,M,Y)^T$;\\ 
-}\\
+\end{sectionbox}
 \vspace{8cm}
 
 \columnbreak
-\pagebreak
+\pagebreak 
 %\includegraphics*[scale=0.6]{farbwuerfel}
 
 
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{CIE}
 \parbox{3.5cm}{\includegraphics[width=3.5cm]{../img/CIE-Normfarbtafel.png}}
 \parbox{3.3cm}{\paragraph{Normfarbtafel nach C.I.E}Ziel: Farbeindruck sämtlicher spektraler Farben duch additive Überlagerung dreie monochromatischer Strahler nachzubilden; $\lambda _{R, CIE} = 700 nm, \lambda _{G, CIE} = 546.1 nm, \lambda _{B, CIE} = 435.8 nm$ sog. Normvalenzen; \\
@@ -329,36 +265,32 @@ Im Bereich $350 nm < \lambda_R < 540 nm$ negativ; $\Ra$ nachzubildende Farbe mit
 Daraus ergibt sich $z = 1 - (x+y)$; Die Farbeindrücke durch elmag Wellen best. F, befinden sich auf Begrenzunglinie der Fläche. Im Inneren befinden sich sämtliche Mischfarben, die durch Mischug der x und y Valenzen erzeugen lassen; Weißpunkt im schwerpunkt; Luminanznormierte Normkarte: 
 \vspace{0.3em}
 
-\emphbox{
+\begin{emphbox}
 $x + y + z = 1$\\
 $\Ra z = 1 - (x+y)$
-}
+\end{emphbox}
 
 \vspace{0.3em}
 
-\tablebox{
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lcr@{}}
-		\ctrule
-		$x = \frac{X}{X + Y + Z}$ & $y = \frac{Y}{X + Y + Z}$ & $z = \frac{Z}{X + Y + Z}$\\
-		\cbrule
-	\end{tabular*}
-}
-}
+\begin{tablebox}{lcr}
+	$x = \frac{X}{X + Y + Z}$ & $y = \frac{Y}{X + Y + Z}$ & $z = \frac{Z}{X + Y + Z}$\\
+\end{tablebox}
+\end{sectionbox}
 
 %\includegraphics*[scale=0.275]{luminanznormierte_normkarte}
 
 \subsection{Hören}
 %\includegraphics*[scale=0.2, angle=270]{ohr}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Das Ohr}
  Außenohr (Ohrmuschel \& Gehörgang); Mittelohr (Trommelfell, Gehörknöchelchen (Hammer, Amboss, Steigbügel) \& Euchstachische Röhre) - Wandlung von Luftschwingung in mech. Schwingung; Innenohr (Steigbügel über ovale Fenster in mit Flüssigkeit gefüllte Schnecke) Impedanzwandlung von Luft zu Flüssigkeit; 
 
 Basilarmembran: Haarzellen (25k - 30k Rezeptoren) wandeln Schwingung in el. Nervenimpulse, Frequenz-Ort-Wandlung, Zerlegung in Frequenzanteile $\Ra$ Hörnerv (30k Nervenfasern) $\Ra$ Hirn
 \includegraphics[width=6.5cm]{../img/Ohr.png}
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Psychoakustik}
  Empfindlich von etwa 20 Hz - 20 kHz ($\approx$ 10 Oktaven); starke Dämpfung für sehr niedrige und sehr hohe Frequenzen; Resonanzfrequenz des Gehörgangs bei ca. $3 \dots 3.4 kHz$; 
 
@@ -366,8 +298,8 @@ Lauteinheit in [sone] 1 sone $\triangleq$ Lautheit eines 1kHz Sinustons mit 40 d
 
 Verhältnistonhöhe [mel] 1000 mel $\triangleq$ 1000Hz
 
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}llll@{}}
-		\ctrule
+
+	\begin{tablebox}{llll}
 		\multicolumn{2}{c}{\emph{Psychoakustik}} &\multicolumn{2}{c}{\emph{Physik}}\\
 		Bezeichnung & Einheit & Bezeichnung & Einheit\\
 		\cmrule
@@ -382,8 +314,7 @@ Verhältnistonhöhe [mel] 1000 mel $\triangleq$ 1000Hz
 		\cmrule
 		\multicolumn{4}{c}{Bezugsschalldruck $p_0 = 2\cdot 10^{-5} \frac{N}{m^2} = 20 \mu Pa$}\\
 		\multicolumn{4}{c}{Bezugsintensität $I_0 = 1.0\cdot 10^{-12} \frac{W}{m^2}$}\\
-		\cbrule
-	\end{tabular*}
+	\end{tablebox}
 
 \paragraph{Hörfläche} Bewertungsfilter mit gleichem Lautstärkeeindruck (A, B, C, D - da nichtlinear zur Lautstärke); Lautheit Z in Sone ist angepasstes Schema; 
 \includegraphics[width=6.5cm]{../img/Hoerflaeche.png}
@@ -397,28 +328,28 @@ Spektrale: verbreitet sich mit steigendem Pegel überproportional;
 Zeitliche: Vorverdeckung; Simultanverdeckung; Nachverdeckung (einige hundert ms); 
 
 Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s; 
-}
+\end{sectionbox}
 
 \section{Dialogsystem}
-\symbolbox{
+\begin{symbolbox}
 \begin{itemize}
 	\item fortgeschrittene intuitive Ein-/Ausgabetechniken 
 	\item Hohes Maß an Interaktivität durch Benutzerfreundlichkeit und ausgeprägte Dialogfähigkeit
 	\item Intelligentes Systemverhalten, selbstständig logische Schlüsse ziehen; 
 \end{itemize}
-}
+\end{symbolbox}
 Teilgebiete der KI: Maschinelles Lernen, Bildverstehende Systeme, Expertensysteme, Robotik, Logik und automatisches Beweisen, Natürlichsprachliche Systeme; 
 
 \subsection{Suchverfahren}
-\symbolbox{
+\begin{symbolbox}
 Formulierung und Darstellung eines Problems im Zustandsraum; Graphen-Darstellung; Suchbaum;
-}
+\end{symbolbox}
 
-\emphbox{
+\begin{emphbox}
  zyklische Wiederholungen unterbinden (gerichtete Kanten im Baum)
-}
+\end{emphbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{\textcolor{darkgreen}{Tiefensuche} und \textcolor{red}{Breitensuche}}
 \begin{enumerate}
 	\item einelementige Liste mit Wurzelknoten
@@ -426,9 +357,9 @@ Formulierung und Darstellung eines Problems im Zustandsraum; Graphen-Darstellung
 \end{enumerate}
 
 Vorraussetzung: Elemente der Warteliste werden systematisch erzeugt; Suchtiefe wird geeignet groß festgesetzt / ausgewertete Suchbaum muss gespeichert werden; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Heuristische Suche / A-Algorithmus}
 Verarbeitung zusätzlicher Informationen; Bewertungsmöglichkeit für Erfolgsaussichten eines bestimmten Pfades; Entscheidungen ordnen; Vielversprechende Alternative zuerst, "`dem atm billigsten folgen"'; Heuristik besteht in Definition einer geeigneten Bewertungs (Kostenfunktion) $f(n)$; z.B.
 
@@ -439,25 +370,25 @@ f(n) = g(n) + h(n)
 Bewertungsfunktion = Bisherige Kosten + Schätzfunktion (hier: falsche Plättchen)
 
 Falls $h(n) \equiv 0$ gewählt wird identisch zur Breitensuche
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{A*-Algorithmus}
 Schätzfunktion $h(n)$ monoton, d.h. Kosten werden nicht überschätzt; terminiert wenn Zielknoten gefunden und keine geringere Kostenschätzung existiert; A* somit optimaler Pfad; wird die optimale Kostenfkt $h1^*(n)$ verwendet, so wird kürzester Pfad auf Anhieb gefunden (sprich: informierte Suche); Liste mit allen Elementen erstellen + sortieren; dem insg. billigsten folgen; nix verwerfen; 
-}
+\end{sectionbox}
 
 \section{Logik und Theorembeweisen}
-\symbolbox{
+\begin{sectionbox}
 Wissen algorithmisch darstellen; Fakten ableiten; Behauptungen bestätigen / widerlegen; 
-}
+\end{sectionbox}
 
 \subsection{Logik}
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Aussagenlogik}
 atomare Aussagen; wahr oder falsch; UND , ODER, NICHT; Implikation $\Rightarrow$; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Prädikatenlogik}
 Analyse und Bewertung von Beziehungen und logischen Verknüpfungen; 1. Ordnung $\Ra$ nur Veränderung von Objekten, nicht Prädikaten; Prädikate und FUnktionen, Konstanten, Variablen, Funktionen, Negation, Disjunktion, Konjunktion, Existenz-Quantor, All-Quantor, Implikation, Äquivalenz
 
@@ -465,9 +396,9 @@ Analyse und Bewertung von Beziehungen und logischen Verknüpfungen; 1. Ordnung $
 $(\forall x) \left\{ \text{Stadt}(x)  \Rightarrow (\exists y) \left[ \text{Mensch}(y) \cdot \text{Bgm}(x,y) \right] \right\}$
 
 Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem); Beweis durch Wahrheitstabelle oder Umformen der Regeln und Schlussfolgern (Resolution, Unifikation - effektiver); 
-}
+\end{sectionbox}
 
-\emphbox{
+\begin{emphbox}
 \emph{Umformregeln:}
 \begin{enumerate}
 	\item Doppelte Negation $\neg \neg A \equiv A$
@@ -484,15 +415,15 @@ Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem);
 	\item $ (\forall x)(A(x) \cdot B(x)) \equiv (\forall x)A(x) \cdot (\forall y )B(y)$ 
 	\item $ (\exists x)(A(x) + B(x)) \equiv (\exists x)A(x) + (\exists y)B(y)$
 \end{enumerate}
-}
+\end{emphbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Standardformen}
 \textcolor{red}{Konjunktive Normalform (KNF): $(A_1 + A_2 + \dots) \cdot (B_1 + B_2 + \dots) \cdot \dots$ }
 
 Disjunktive Normalform: $(A_1 \cdot A_2 \cdot \dots) + (B_1 \cdot B_2 \cdot \dots) + \dots$
 
-\cooknumbox{Regeln zur Umformung in Normalform:}{
+\begin{cookbox}{Regeln zur Umformung in Normalform:}
 %\begin{enumerate}
 	\item Eliminierung aller Äquivalenzen (\# 9)
 	\item Eliminierung aller Implikationen (\# 8)
@@ -504,12 +435,12 @@ Disjunktive Normalform: $(A_1 \cdot A_2 \cdot \dots) + (B_1 \cdot B_2 \cdot \dot
 	\item Eliminierung der UND-Verknüpfungen durch Auflistung der Klauseln
 	\item Einführung getrennter Variablen für jede Klausel
 %\end{enumerate}
-}
-}
+\end{cookbox}
+\end{sectionbox}
 
 \subsection{Theorembeweis}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Resolutionsverfahren}
 Gegeben sind zwei Formel der Form: 
 
@@ -530,97 +461,101 @@ Vorgehen: Erweiterung von $\mathcal S $ zu $\mathcal S^* = \left\{S_1 \dots S_n 
 
 \textcolor{red}{Erklärung: Statt Beweis wird Unerfüllbarkeit seines Gegenteils gezeigt. }
 
-\cooknumbox{Tautologie beweisen: }{
+\begin{cookbox}{Tautologie beweisen: }
 	\item Wahrheit auf KNF bringen
 	\item Gegenteil auf KNF bringen
 	\item Zeige, dass Gegenteil \{ \} ist. 
-}
-}
+\end{cookbox}
+\end{sectionbox}
 
 \section{Wissensrepräsentation}
-\symbolbox{
+\begin{symbolbox}
 effizient speichern; strukturiert darstellen; Menge von Fakten, Regeln, Prozeduren, Modellen, Daten, Heuristiken; interpretierbar mit Hilfe von Repräsentationsmechanismen; 
-}
+\end{symbolbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Prädikatenlogik}
 Aufteilung in Fakten und Regeln; Standardisiert durch KNF; Resolution als Inferenzmechanismus; Formulierung aufwändig und unnatürlich; zwingend Umformung in KNF;
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Produktionsregeln}
 keine Umformung in KNF; Wenn-Dann bleibt erhalten; Vorwärts- Rückwärtsverkettung als Inferenzmechanismus; Darstellung im UND/ODER-Graphen; Fakten als Blatt, Regeln als Verzweigung;
-}
+\end{sectionbox}
 
-\cooknumbox{Vorwärtsverkettung}{
+\begin{sectionbox}
+\begin{cookbox}{Vorwärtsverkettung}
 	\item Gültige Fakten einkreisen
 	\item Suchen nach Regeln, in denen diese Fakten im Bedingungsteil der Regeln vorkommen
 	\item Überprüfen ob Aktionsteil der Regeln eingeleitet werden kann
 	\item Back to \#2
 	\item Wenn keine neuen Regeln mehr feuern, überprüfen ob ein Ziel erfüllt wurde
-}
+\end{cookbox}
 
-\cooknumbox{Rückwärtsverkettung}{ 
-	\item  Vorgabe eines möglichen Ziels
+\begin{cookbox}{Rückwärtsverkettung}
+	\item Vorgabe eines möglichen Ziels
 	\item Untersuchen der Bedingungen die zum erreichen dieses Ziels erfüllt sein müssen
 	\item Formulierung dieser Bedingungen als neue Teilziele, back to \# 2
 	\item Falls Ziel wg. Bedingungen nicht erreicht werden kann, back to \#1 mit anderem Ziel
 	\item Wurden für ein Ziel alle Bedingungen erfüllt $\Ra$ Finish
-}
+\end{cookbox}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Semantische Netze}
 Graphische Modelle zur Darstellung von Wissen über beziehungen zw. Objekten; entsprechen etwa Fakten der Prädikatenlogik; Knoten = Objekte; Kanten = Prädikate; Verwendung bei natürlichssprachigen Systemen; keine 2 Knoten gleicher Beschriftung; Richtung der Kanten von Bedeutung; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Rahmen}
 Darstellung der Zerlegung von Objekten oder Situationen in ihre Bestandteile; Ähnlichkeit zu semantischen Netzen, wesentlich mächtiger und flexibler; FrameName - zentraler Knoten, Slots - Kanten, Filler - Knoten; 
 
 1. Suchverfahren zur Ermittlung von Beziehungen; 
 
 2. "`Rahmen-Abgleich"'; Fakten als Fragezeichen markiert; mit aktuellen Daten auffüllen; 
-}
+\end{sectionbox}
 
 
 \section{Grammatiken}
-\symbolbox{
+\begin{symbolbox}
 natürlichsprachige Systeme; Modellierung von Dialogen; 
-}
+\end{symbolbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Kontextfreie Grammatiken}
 CFG; $ \mathcal G = \left\{ V, T, P, S \right\} $ mit Variable (Großbuchstaben), Terminale (Kleinbuchstaben), Produktionsregel ($A \rightarrow \alpha $ mit $A \in \left\{V \right\}$ und $\alpha \in \left\{ V \cup T \right\} $), Startsymbol; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Chomsky-NormalForm}
 CNF; Enthält nur Produktionsregeln, bei denen auf der rechten Seite nur zwei Variablen oder nur ein terminaler Ausdruck steht: 
 
-\emphbox{$A \rightarrow BC$ oder $A \rightarrow a$}
-}
+\begin{emphbox}
+	$A \rightarrow BC$ oder $A \rightarrow a$
+\end{emphbox}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Backus-Naur-Form (BNF)}
 formal exakte Definition von Programmiersprachen; Nichtterminalsymbole werden syntaktische Variablen genannt und durch $<$,$ >$ gekennzeichnet; Darst. von Wdh. durch Rekursion; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{EBNF}
 Erweiterte BNF; Optionen [...]; abgezählte Wdh. 4*; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Parsing}
 Satzgenerierung: Produktionsregeln solange anwenden, bis alle Variablen V durch terminale Symbole T ersetzt sind; Parse-Tree; Ambiguitäten; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Anwendung von Grammatiken in KI}
 Sprache; Mustererkennung; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Beispiele}
 Palindrom-String:
 \begin{equation*}
@@ -652,54 +587,54 @@ S (Satz), NP (Nominalphrase), VP (Verbalphrase), PP (Päpositionalphrase), DET (
 	&  \text{N} \ra  \text{"`Junge"', "`Hund"', "`Hand"',...}\\
 \end{split}
 \end{equation*}
-}
+\end{sectionbox}
 
 
 \section{Automatentheorie}
-\symbolbox{
+\begin{symbolbox}
 Verarbeitung von Symbolfolgen; Modellierung von Dialogen; 
-}
+\end{symbolbox}
 
 \subsection{Automatentypen}
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Zustandsautomat}
 Graphenform; bestimmte Anzahl von Knoten (Zustände) und Verbindungen (Transitionen); 
 \begin{equation*}
 Z = (S, X, T, s_0, \mathcal F )
 \end{equation*}
 Set mit endlicher Anzahl Zustände, x zulässiges Alphabet für die zu verarbeitende Symbolfolge X, T Transitionsfunktionen, $s_0$ Anfangszustand, $\mathcal F$ ein Set von festgelegten Endzuständen; deterministisch / nicht-d.; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Kellerautomaten}
 komplexere Grammatiken; Erweiterung mit Stack (LIFO); Transition abhängig von Stack und Eingang; Stack leer $\Ra$ Folge akzeptiert; 
 \begin{equation*}
 Z = (S, X, Y, T, s_0, y_0 \mathcal F )
 \end{equation*}
 Y - zulässiges Alphabet fürn Stack, $y_0$ Start für Stack, $\mathcal F$ leer wenn Endzustand über leeren Stack definiert ist; 
-}
+\end{sectionbox}
 
 \section{Dialoggestaltung}
-\symbolbox{
+\begin{symbolbox}
 Ein-/Ausgabe; Fehlerbehandlung; Fehlertoleranz; Kenntnis der Aufgabe; Benutzergruppen; 
-}
+\end{symbolbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Expertensysteme}
 komplexes, wissensbasiertes Softwarepaket; Wissensbasis statt Datenbasis; Komponenten zur Pflege und Erweiterung dieser Basis; Schließregeln können neues Wissen produzieren; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Wissen}
 informelles, technisches (Algorithmen, Formeln, fixe Formeln, variable Daten), formales (wenn-dann, variable formeln + daten); 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Einsatzgebiete}
 komplexe Aufgabenstellungen; Diagnoseaufgaben; Konfigurationsaufgaben; Beratungsaufgaben; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Aufbau}
 Wissensbasis: Fakten, Regeln, Prozeduren; wichtigste Komponente; 
 
@@ -712,24 +647,24 @@ Dialogkomponente: Interface;
 Wissenserwerbkomponente: effiziente Entlastung des Programmierers; 
 
 Experten, Entwickler, Anwender; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Dialogformen}
 Frage-Antwort; Menüauswahl; Formular; Kommandosprachen; Natürlichsprachlich; Direkte Manipulation; Multimediadialog; 
-}
+\end{sectionbox}
 
 \section{Sprachkommunikation}
-\symbolbox{
+\begin{sectionbox}
 eine der natürlichsten Kommunikationsformen; größtes Potential; bedeutendste \& komplexeste Teil: Spracherkennung; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Klassifizierung}
 Zuordnung zu Bedeutungseinheiten; Merkmalsextraktion; Merkmalsvektor; Merkmalsraum; Klassen; Training; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsection{Abstandsklassifikatoren}
 Distanz eines Mustervektors zu Klasse; 
 
@@ -753,25 +688,28 @@ Mahalanobis Abstand: \textbf{Inverse} der Kovarianzmatrix; Abhängig von Klasse;
 	& A^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
 \end{split}
 \end{equation*}
-}
+\end{sectionbox}
+
+\columnbreak
+
 
 \section{HMM und Algorithmen}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Markov-Modelle}
 Abbildung stochastischer Prozesse, deren aktueller Zustand nur vom vorausgegangenen Zustand abhängt; Matrixdarstellung \begin{equation*}
 A = p \left\{ q_{t+1} = s_j | q_t = s_i \right\}
 \end{equation*}
 Startzustand $q_1$; Vektor $e = (p(q_1 = s_1), \dots , p(q_1 = s_N))^T$ der Einsprungwahrscheinlichkeit
-}
+\end{sectionbox}
 
 \subsection{HMM}
 
-\symbolbox{
+\begin{sectionbox}
 Hidden-Markov-Modelle; statistischer Klassifikator; liefert $p$ dass eine Beobachtung einer best. Klasse zugeordnet werden kann; klassifizieren ganze Sequenzen (dynamische Folgen); "`Finde diejenige Klasse, die die Beobachtung $o=(o_1, o_2, \dots , o_t)$ am besten nachbilden kann."';  
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{HMM}
 stochastische Version eines endlichen Zustandautomaten; Zustandsübergänge und Symbolemissionen nicht deterministisch; Beobachtungswahrscheinlichkeitsmatrix; $v = (V_1, \dots, v_M)$ Menge der möglichen Beobachtungen; 
 
@@ -789,55 +727,55 @@ stochastische Version eines endlichen Zustandautomaten; Zustandsübergänge und 
 
 Von Beobachtungsfolge o kann i.A. nicht auf durchlaufene Zustandsfolge q geschlossen werden (hidden)
 
-\topicbox{HMM - Eigenschaften}{
-\emph{Ergodisches HMM}
-Es kann aus jedem Zustand in jeder andere Zustand erreicht werden; A ist voll besetzt\\
-\emph{Links-Rechts-HMM}
-keine Rücksprünge; kausal; A hat rechte obere Dreiecksform; Graphisch nach rechts aufsteigend $\Ra$ Name
-}
-}
+\begin{tablebox}{p{\textwidth}}
+\emph{HMM - Eigenschaften} \\ % topicbox
+\cmrule
+\emph{Ergodisches HMM} \quad Es kann aus jedem Zustand in jeder andere Zustand erreicht werden; A ist voll besetzt \\
+\emph{Links-Rechts-HMM} \quad keine Rücksprünge; kausal; A hat rechte obere Dreiecksform; Graphisch nach rechts aufsteigend $\Ra$ Name
+\end{tablebox}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Klassifizierung mit HMM}
 Pro Klasse ein HMM; das HMM welches die größte Produktionswahrscheinlichkeit $p(o|\lambda_k)$ liefert repräsentiert die gesuchte Klasse $k_x$; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Training von HMM}
 Kompensation von Störungen; Bed.: geeignete Parameter $\lambda_k$; Training mit iterativen Verfahren; $\Ra$ Baum-Welch-Algorithmus
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Trellis}
 Zeitabfolge in Diagramm; Berechnung sehr rechenintensiv ($OPS ~ 2T + N^T$); Weg $q$; 
 \begin{equation*}
 p(o | \lambda_k) = \sum\limits_{q \in Q} e_{q1} b_{q1} (o_1) \prod\limits^T _{t=2} a_{q_{t-1} q_t} b_{q_t} (o_t)
 \end{equation*}
-}
+\end{sectionbox}
 
 \subsection{HMM in der Spracherkennung}
 
-\symbolbox{
+\begin{symbolbox}
 Cepstrum;  Merkmalsexrahierung; 12D Merkmalsvektor;
-}
+\end{symbolbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Modelle}
 Einzelworterkenner vs. fließende Sprache; Phoneme, kleinste bedeutungsunterscheidenden Lauteinheiten; HMM pro Phonem; Pausen; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Training}
 Zusammenfassung der Phonem HMM zu einem HMM; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Erkennung}
 Wörterbücher, Grammatiken, Wahrscheinlichkeiten bestimmter Phonemkombinationen, Sprachmodelle für Wortkombinationen; 
-}
+\end{sectionbox}
 
 \subsection{HMM-Algorithmen}
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Vorwärts-Algorithmus}
 Vorwärts-Wahrscheinlichkeit:
 
@@ -845,7 +783,7 @@ $\alpha_t (i) = \P(o_1, o_2, \dots , o_t , q_t = s_i | \lambda_k)$
 
 d.h. die Wahrscheinlichkeit, dass die Teilbeobachtung $o_i$ emittiert werden und das sich das HMM zu t im Zustand $s_i$ befindet; 
 
-\cooknumbox{Vorwärts-Algorithmus (Rekursiv)}{
+\begin{cookbox}{Vorwärts-Algorithmus (Rekursiv)}
 	\item Initialisierung: \\
 		$\alpha_1(i) = e_i b_i (o_1), \quad 1 \leq i \leq N $\\
 	\item Induktion: \\
@@ -853,11 +791,11 @@ d.h. die Wahrscheinlichkeit, dass die Teilbeobachtung $o_i$ emittiert werden und
 		$  \quad 1 \leq t \leq T-1; \quad 1 \leq j \leq N;$\\
 	\item Terminierung \\
 		$\P(o|\lambda_k )= \sum\limits_{i=1}^N \alpha _T (i)$\\
-}
+\end{cookbox}
 Benötigte OPS : $T * N^2$; 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Baum-Welch-Algorithmus}
 Rückwärtswahrscheinlichkeit:
 
@@ -865,13 +803,13 @@ Rückwärtswahrscheinlichkeit:
 
 d.h. Wahrscheinlichkeit, die restlichen Teilbeob. zu emmttieren;
 
-\cooknumbox{Baum-Welch-Algorithmus (Rekursiv)}{
+\begin{cookbox}{Baum-Welch-Algorithmus (Rekursiv)}
 	\item Initialisierung\\
 		 $\beta_T (i) = 1 \quad 1 \leq i \leq N $\\
 	\item Induktion\\
 		$\beta_t(i) = \sum\limits_{j=1}^N a_{ij} b_j (o_{t+1}) \beta_{t+1} (j)$\\
 		$t = T-1, T-2, \dots 1 \quad 1 \leq i \leq N$\\
-}
+\end{cookbox}
 
 Wahrscheinlichkeit, dass sich dass HMM zu t im Zustand $s_i$ befindet und o emmitiert wird; Summe drüber $\Ra$  "`alle Aufenthalte im Zustand $s_i$"'
 \begin{equation*}
@@ -886,12 +824,12 @@ Wahrscheinlichkeit, dass sich das HMM zu t in $s_i$ und zu t+1 in $s_j$ befindet
 \end{split}
 \end{equation*}
 
-}
+\end{sectionbox}
 
-\sectionbox{
+\begin{sectionbox}
 \subsubsection{Viterbi-Algo}
 meist reicht Kenntnis des wahrscheinlichsten Pfades; 
-\cooknumbox{Viterbi-Algorithmus}{
+\begin{cookbox}{Viterbi-Algorithmus}
 	\item Initialisierung: \\
 		$\delta_1 (i) = e_i b_i (o_1) \quad 1 \leq i \leq N $\\
 		$\psi _1 (i) = 0$\\
@@ -905,9 +843,8 @@ meist reicht Kenntnis des wahrscheinlichsten Pfades;
 	\item Ermittlung der wahrsch. Zustandsfolge:\\
 		$q_t^* = \psi_{t+1}(q^*_{t+1})$\\
 		$t= T-1, T-2, \dots , 1$\\
-}
-}
-
+\end{cookbox}
+\end{sectionbox}
 
 
 %\includegraphics*[scale=0.3]{Zapfenverteilung}
@@ -920,8 +857,6 @@ meist reicht Kenntnis des wahrscheinlichsten Pfades;
 %\includegraphics*[scale=0.9]{CIE_Normkarte}
 
 %\includegraphics*[scale=0.22]{Hoerflaeche}
-% Ende der Spalten
-\end{multicols*}
 
 % Dokumentende
 % ======================================================================
