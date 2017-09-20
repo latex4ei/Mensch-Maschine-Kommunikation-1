@@ -1,5 +1,6 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 % 
+% Mensch-Maschine-Kommunikation 1 (ab WS 2016/17)
 % Formelsammlung von LaTeX4EI
 %
 % @encode: 	UTF-8, tabwidth = 4, newline = LF
@@ -37,7 +38,7 @@
 
 % LaTeX4EI Definitions
 
-\title{Mensch-Maschine-Kommunikation 1}
+\title{Mensch-Maschine-Kommunikation 1 \\ {\large (ab WS 2016/17)}}
 \author{Lukas Kompatscher, Fabian Göttel und Hendrik Böttcher}
 \myemail{lukas.kompatscher@tum.de}	
 
@@ -127,7 +128,7 @@
 \end{sectionbox}
 
 
-% SECTION 2: SPRACHKOMMUNKIKATION ======================================
+% SECTION 2: SPRACHKOMMUNIKATION ======================================
 \section{Sprachkommunikation}
 % ======================================================================
 \begin{symbolbox}
@@ -325,7 +326,15 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 		\item $\mathcal F$ ein Set von festgelegten Endzuständen
 	\end{itemize}
 	Transitionsfunktion als Regel: $t(s^−, x_i) = s^+$
-	\paragraph{Beispiel für einen deterministischen Zustandsautomaten}\ \\
+	\begin{cookbox}{Umwandlung: Zustandsautomat in Grammatik}
+		\item Zustänge werden Variable: $\mathcal S \Ra V$
+		\item Eingabealph. wird zu Terminal: $\mathcal X \Ra T$
+		\item Transitionen werden Produktionsregeln: $\ma T \Ra \P$,\\
+		z.B. $P = \{S \ra aA, A ra bA $
+		\item Für jeden Endzustand $s_E$ erstelle Produktionsregel,\\
+		z.B. für B als Endzustand $\Ra P = \{\dots,B\ra \epsilon\}$
+	\end{cookbox}
+	\vspace{-1em}\paragraph{Beispiel für einen deterministischen Zustandsautomaten}\ \\
 	\parbox{0.5\textwidth}{
 		\begin{equation*}
 			\begin{aligned}
@@ -340,9 +349,9 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 	}\\
 	Transitionsregeln in Tabellenform: \\
 	\includegraphics[width=0.4\textwidth]{transitionsregeln_tab}
-
-	\paragraph{Beispiel für einen nicht-deterministischen Zustandsautomaten}\ \\
+	\vspace{-1em}\paragraph{Beispiel für einen nicht-deterministischen Zustandsautomaten}\ \\
 	\includegraphics[width=0.3\textwidth]{zustandsautomat_nicht_det}
+	
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -360,8 +369,7 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 		\item $y_0$ Startsymbol für den Stack
 		\item $\mathcal F$ ein Set von festgelegten Endzuständen (leer wenn Endzustand über leeren Stack definiert ist)
 	\end{itemize}
-	
-	\paragraph{Beispiel für einen Kellerautomaten:}\ \\
+	\vspace{-1em}\paragraph{Beispiel für einen Kellerautomaten:}\ \\
 	\parbox{0.5\textwidth}{
 		\begin{equation*}
 		\begin{aligned}
@@ -376,9 +384,9 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 	\parbox{0.5\textwidth}{ 
 		\includegraphics[width=0.5\textwidth]{kellerautomat}
 	}\\
-	Angaben in Klammern:\\
-	(Voraussetzung auf Stack $\in \mathcal Y$, Eingabe $\in \mathcal X$, Aktion push($\dots$)/pop)
 	Generiert Sprache: $L(a^nb^n)$ mit $n>0$
+	\vspace{-1em}\paragraph{Angaben in Klammern:}\ \\
+	(Voraussetzung auf Stack $\in \mathcal Y$, Eingabe $\in \mathcal X$, Aktion push($\dots$)/pop)
 \end{sectionbox}
 
 \columnbreak
@@ -450,7 +458,7 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 % SECTION: HIDDEN-MARKOV-MODELLE =======================================
 \section{Hidden-Markov-Modelle und Algorithmen}
 % ======================================================================
-\begin{symbolbox}
+\begin{symbolbox}Wahrscheinlichkeit
 Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtung einer bestimmten Klasse zugeordnet werden kann. Klassifizieren ganze Sequenzen (dynamische Folgen). "`Finde diejenige Klasse, die die Beobachtung $o=(o_1, o_2, \dots , o_t)$ am besten nachbilden kann."'.  
 \end{symbolbox}
 
@@ -521,7 +529,7 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 	\subsection{HMM-Algorithmen}
 	
 	\subsubsection{Trellis}
-	Mathematische Formel zur Berechnun der Beobachtungswkt.\\ 
+	Mathematische Formel zur Berechnung der Beobachtungswkt.\\ 
 	Für verschiedene Wege $q$ gilt: \\ 
 	$p(\vec o, \vec q | \lambda_k) = e_{q1} b_{q1} (o_1) \prod\limits^T _{t=2} a_{q_{t-1} q_t} b_{q_t} (o_t)$
 	Beobachtungswahscheinlichkeit:
@@ -724,7 +732,7 @@ Disjunktive Normalform: $(A_1 \cdot A_2 \cdot \dots) + (B_1 \cdot B_2 \cdot \dot
 	\item Einführung neuer Variabeln für jeden Quantifizierer
 	\item Eliminierung aller Existenz Quantoren
 	\item Ausklammern der All-Quantoren und Entfallen dieser
-	\item Anwendung des Distributivgesetzes zur Transofrmation in Konjunktive Normalform (\#5)
+	\item Anwendung des Distributivgesetzes zur Transformation in Konjunktive Normalform (\#5)
 	\item Eliminierung der UND-Verknüpfungen durch Auflistung der Klauseln
 	\item Einführung getrennter Variablen für jede Klausel
 %\end{enumerate}
@@ -927,7 +935,7 @@ $\Delta x = x_{norm}[k+1]-x_{norm}[k]$, $\Delta y = y_{norm}[k+1]-y_{norm}[k]$\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Dialogsystem}
+\section{Dialogsystem (Anhang)}
 \begin{symbolbox}
 \begin{itemize}
 	\item fortgeschrittene intuitive Ein-/Ausgabetechniken 
@@ -935,7 +943,7 @@ $\Delta x = x_{norm}[k+1]-x_{norm}[k]$, $\Delta y = y_{norm}[k+1]-y_{norm}[k]$\\
 	\item Intelligentes Systemverhalten, selbstständig logische Schlüsse ziehen; 
 \end{itemize}
 \end{symbolbox}
-Teilgebiete der KI: Maschinelles Lernen, Bildverstehende Systeme, Expertensysteme, Robotik, Logik und automatisches Beweisen, Natürlichsprachliche Systeme; 
+Teilgebiete der KI: Maschinelles Lernen, Bildverstehende Systeme, Expertensysteme, Robotik, Logik und automatisches Beweisen, natürlichsprachliche Systeme; 
 
 
 
