@@ -1,5 +1,5 @@
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
 % Mensch-Maschine-Kommunikation 1 (ab WS 2016/17)
 % Formelsammlung von LaTeX4EI
 %
@@ -7,7 +7,7 @@
 % @author:	Lukas Kompatscher
 % @date:	18.03.2016
 %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
 % Dokumenteinstellungen
@@ -24,7 +24,7 @@
 \usepackage{makecell}
 
 % Additional Definitions and Formats
-\graphicspath{{img/}} 
+\graphicspath{{img/}}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \DeclareTextFontCommand{\emph}{\bfseries}
 \makeatletter
@@ -40,11 +40,14 @@
 
 \title{Mensch-Maschine-Kommunikation 1 \\ {\large (ab WS 2016/17)}}
 \author{Fabian Göttel, Hendrik Böttcher und Lukas Kompatscher}
-\myemail{lukas.kompatscher@tum.de}	
+\myemail{lukas.kompatscher@tum.de}
 
 % Dokumentbeginn
 % ======================================================================
 \begin{document}
+
+\IfFileExists{git.id}{\input{git.id}}{}
+\ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
 
 % TITLE ================================================================
 \maketitle
@@ -167,7 +170,7 @@
 	\begin{itemize}
 		\item Empfindlich von etwa 20 Hz - 20 kHz ($\approx$ 10 Oktaven)
 		\item Starke Dämpfung für sehr niedrige und sehr hohe Frequenzen
-		\item Resonanzfrequenz des Gehörgangs bei ca. $3 \dots 3.4 kHz$; 
+		\item Resonanzfrequenz des Gehörgangs bei ca. $3 \dots 3.4 kHz$;
 		\item Lauteinheit in [sone] 1 sone $\triangleq$ Lautheit eines 1kHz Sinus mit 40 dB
 		\item Verhältnistonhöhe [mel] 1000 mel $\triangleq$ 1000Hz
 	\end{itemize}
@@ -188,17 +191,17 @@
 		\multicolumn{4}{c}{Bezugsintensität $I_0 = 1.0 \cdot 10^{-12} \frac{W}{m^2}$}\\
 	\end{tablebox}
 % \end{sectionbox}
-% 
+%
 % \begin{sectionbox}
 \vspace{-1em}\paragraph{Hörfläche} Jener Frequenz- und Pegelbereich von Schall, der vom menschlichen Gehör wahrgenommen werden kann:
 \begin{center}
 	\includegraphics[width=0.7\textwidth]{Hoerflaeche}
-	\includegraphics[width=\textwidth]{kurve_gleicher_lautstaerke}	
+	\includegraphics[width=\textwidth]{kurve_gleicher_lautstaerke}
 \end{center}
 
 \vspace{-1em}\paragraph{Frequenzbewertung} Verfahren zur frequenzabhängigen Anpassung von Schalldruckpegeln an das menschliche Hörempfinden (nichtlinear zur Lautstärke). Hierfür werden verschiedene Filterkurven verwendet: A(20–40 phon), B(50–70 phon), C(80–90 phon), D(sehr hohe Schalldrücke) mit gleichem Lautstärkeeindruck. Lautheit $N$ in Sone ist angepasstes Schema.
 \vspace{-1em}\paragraph{Frequenzgruppen} (24) begrenzte Auflösung des Gehörs; jede Frequenzgruppe nimmt gleiche Länge auf Basilarmembran ein (1,3mm - unter 500 Hz = 100Hz, drüber kleine Terz 1,19 der Mittenfrequenz); Bark-Skala; 1.31 Bark = 131 mel = 131 Hz.; Blätterrauschen in Ferne L = 10dB, Düsenjäger in 30 m L = 140dB.
-\vspace{-1em}\paragraph{Verdeckungen} Hörschwelle bei Störschall (Maskierer); 
+\vspace{-1em}\paragraph{Verdeckungen} Hörschwelle bei Störschall (Maskierer);
 \begin{itemize}
 	\item Spektrale: verbreitet sich mit steigendem Pegel überproportional.
 	\item Zeitliche: Vorverdeckung; Simultanverdeckung; Nachverdeckung (einige hundert ms).
@@ -209,10 +212,10 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 \begin{sectionbox}
 	\subsection{Menschliche Spracherzeugung}
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{hals_anatomie}	
+		\includegraphics[width=0.8\textwidth]{hals_anatomie}
 	\end{center}
 	\subsubsection{Phoneme}
-	Das Phonem ist die kleinste bedeutungsunterscheidende Einheit des gesprochenen Wortes. \\ 
+	Das Phonem ist die kleinste bedeutungsunterscheidende Einheit des gesprochenen Wortes. \\
 	\includegraphics[width=\textwidth]{phoneme} \\
 	Systematische Einteilung der Phoneme:
 	\begin{center}
@@ -226,27 +229,27 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 \section{Grammatiken}
 % ======================================================================
 \begin{symbolbox}
-	Natürlichsprachige Systeme; Modellierung von Dialogen. 
+	Natürlichsprachige Systeme; Modellierung von Dialogen.
 \end{symbolbox}
 
 \begin{sectionbox}
 	\subsection{Kontextfreie Grammatiken (CFG)}
-	$ \mathcal G = \left\{ V, T, P, S \right\} $ mit 
+	$ \mathcal G = \left\{ V, T, P, S \right\} $ mit
 	\begin{itemize}
 		\item $V \equiv$ Variable (Großbuchstaben)
 		\item $T \equiv$ Terminale (Kleinbuchstaben)
 		\item $P \equiv$ Produktionsregel ($A \rightarrow \alpha $ mit $A \in \left\{V \right\}$ und $\alpha \in \left\{ V \cup T \right\} $)
 		\item $S \equiv$ Startsymbol
-	\end{itemize} 
-	
+	\end{itemize}
+
 	\subsubsection{Chomsky-NormalForm (CNF)}
-	Enthält nur Produktionsregeln, bei denen auf der rechten Seite nur zwei Variablen oder nur ein terminaler Ausdruck steht: 
+	Enthält nur Produktionsregeln, bei denen auf der rechten Seite nur zwei Variablen oder nur ein terminaler Ausdruck steht:
 	\begin{emphbox}
 		$A \rightarrow BC$ oder $A \rightarrow a$
 	\end{emphbox}
-	
+
 	\subsubsection{Backus-Naur-Form (BNF)}
-	Formal exakte Definition von Programmiersprachen. Nichtterminalsymbole werden syntaktische Variablen genannt und durch $<$ $>$ gekennzeichnet. Darstellung von Wiederholungen durch Rekursion. 
+	Formal exakte Definition von Programmiersprachen. Nichtterminalsymbole werden syntaktische Variablen genannt und durch $<$ $>$ gekennzeichnet. Darstellung von Wiederholungen durch Rekursion.
 	\begin{itemize}
 		\item $|$ Alternative
 		\item $(\dots)$ Gruppierung
@@ -254,19 +257,19 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 		\item $(\dots)*$ optionale Wiederholung (keinmal, ein- oder mehrfach)
 		\item $(\dots)+$ Wiederholung (ein- oder mehrfach)
 	\end{itemize}
-	
+
 	\subsubsection{Erweiterte Backus-Naur-Form (EBNF)}
 	\begin{itemize}
 		\item $[\dots]$ Option
 		\item ${\dots}$ optionale Wiederholung (keinmal, ein- oder mehrfach)
 		\item $n*$ abgezählte Wiederholung
 	\end{itemize}
-	
+
 	\subsubsection{Parsing}
-	Satzgenerierung: Produktionsregeln solange anwenden, bis alle Variablen V durch terminale Symbole T ersetzt sind; Parse-Tree; Ambiguitäten; 
-	
+	Satzgenerierung: Produktionsregeln solange anwenden, bis alle Variablen V durch terminale Symbole T ersetzt sind; Parse-Tree; Ambiguitäten;
+
 	\subsubsection{Anwendung von Grammatiken in KI}
-	Sprache; Mustererkennung; 
+	Sprache; Mustererkennung;
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -309,7 +312,7 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 \section{Automatentheorie}
 % ======================================================================
 \begin{symbolbox}
-	Verarbeitung von Symbolfolgen; Modellierung von Dialogen; 
+	Verarbeitung von Symbolfolgen; Modellierung von Dialogen;
 \end{symbolbox}
 
 \begin{sectionbox}
@@ -344,19 +347,19 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 			\end{aligned}
 		\end{equation*}
 	}
-	\parbox{0.4\textwidth}{ 
+	\parbox{0.4\textwidth}{
 		\includegraphics[width=0.3\textwidth]{zustandsautomat}
 	}\\
 	Transitionsregeln in Tabellenform: \\
 	\includegraphics[width=0.4\textwidth]{transitionsregeln_tab}
 	\vspace{-1em}\paragraph{Beispiel für einen nicht-deterministischen Zustandsautomaten}\ \\
 	\includegraphics[width=0.3\textwidth]{zustandsautomat_nicht_det}
-	
+
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Kellerautomaten}
-	Komplexere Grammatiken; Erweiterung mit Stack (LIFO-Queue); Transition abhängig von Stack und Eingang; Stack leer $\Ra$ Folge akzeptiert; 
+	Komplexere Grammatiken; Erweiterung mit Stack (LIFO-Queue); Transition abhängig von Stack und Eingang; Stack leer $\Ra$ Folge akzeptiert;
 	\begin{equation*}
 	Z = (\mathcal S, \mathcal X, \mathcal Y, \ma T, s_0, y_0 \mathcal F)
 	\end{equation*}
@@ -381,7 +384,7 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 		\end{aligned}
 		\end{equation*}
 	}
-	\parbox{0.5\textwidth}{ 
+	\parbox{0.5\textwidth}{
 		\includegraphics[width=0.5\textwidth]{kellerautomat}
 	}\\
 	Generiert Sprache: $L(a^nb^n)$ mit $n>0$
@@ -400,7 +403,7 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 
 \begin{sectionbox}
 	\subsection{Klassifizierung}
-	Zuordnung zu Bedeutungseinheiten; Merkmalsextraktion; Merkmalsvektor; Merkmalsraum; Klassen; Training; 
+	Zuordnung zu Bedeutungseinheiten; Merkmalsextraktion; Merkmalsvektor; Merkmalsraum; Klassen; Training;
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -412,7 +415,7 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 		\item $\vec m_k$ Klassenzentrum der Klasse k
 		\item $d_k(\vec x, \vec m_k)$ Abstandsformel
 		\item $k_x$ Klasse mit minimalen Abstand zu $\vec x$
-	\end{itemize} 
+	\end{itemize}
 	Formeln
 	\begin{equation*}
 	\begin{aligned}
@@ -421,13 +424,13 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 		k_x &= \underset{x}{\mathrm{argmin}}\ d_k(\vec x, \vec m_k)
 	\end{aligned}
 	\end{equation*}
-	
+
 	Trennfunktion:
 	\begin{equation*}
 		d_1 (x, m_1) - d_2 (x, m_2) = 0
 	\end{equation*}
 
-	Gewichtsmatrix $W_k$ entscheidend über Ergebnis; $m_k$ wird im Training ermittelt; $x$ gehört zur Klasse k mit minimalen Abstand; 
+	Gewichtsmatrix $W_k$ entscheidend über Ergebnis; $m_k$ wird im Training ermittelt; $x$ gehört zur Klasse k mit minimalen Abstand;
 	\vspace{-1em}\paragraph{Quadratischer Abstand} $W_k$ ist Einheitsmatrix; Trennfunktion ist eine Gerade;
 	\vspace{-1em}\paragraph{Mahalanobis Abstand} Inverse der Kovarianzmatrix; Abhängig von Klasse; Bestandteil des Trainings; Trennfunktion ist Kegelschnitt (Gerade, Ellipse, Parabel, Hyperbel).
 
@@ -450,7 +453,7 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 		\item Logarithmierung des Amplitudenspektrums
 		\item Rücktransformation mit inverser FT
 	\end{itemize}
-	
+
 \end{sectionbox}
 
 \columnbreak
@@ -459,7 +462,7 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 \section{Hidden-Markov-Modelle und Algorithmen}
 % ======================================================================
 \begin{symbolbox}Wahrscheinlichkeit
-Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtung einer bestimmten Klasse zugeordnet werden kann. Klassifizieren ganze Sequenzen (dynamische Folgen). "`Finde diejenige Klasse, die die Beobachtung $o=(o_1, o_2, \dots , o_t)$ am besten nachbilden kann."'.  
+Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtung einer bestimmten Klasse zugeordnet werden kann. Klassifizieren ganze Sequenzen (dynamische Folgen). "`Finde diejenige Klasse, die die Beobachtung $o=(o_1, o_2, \dots , o_t)$ am besten nachbilden kann."'.
 \end{symbolbox}
 
 \begin{sectionbox}
@@ -469,7 +472,7 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 		\item Matrix der Übergangswkt.: $\ma A = p \left\{ q_{t+1} = s_j | q_t = s_i \right\}$
 		\item Vektor der Einsprungswkt.: \\ $\vec e = (p(q_1 = s_1), \dots , p(q_1 = s_N))^T$
 	\end{itemize}
-	\includegraphics[width=0.8\textwidth]{mm}	
+	\includegraphics[width=0.8\textwidth]{mm}
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -486,7 +489,7 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 				p(v_1 | s_1) & \dots & p(v_1 | s_N) \\
 				\vdots & \ddots & \vdots \\
 				p(v_M | s_1) & \dots & p(v_M | s_N) \\
-		\end{bmatrix} \\ 
+		\end{bmatrix} \\
 		\end{equation*}
 	\end{itemize}
 	Zusammengefasste Parameter des HMMs: $\lambda = (\vec e, \ma A, \ma B)$\\
@@ -497,12 +500,12 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 	\emph{HMM - Eigenschaften} \\ % topicbox
 	\cmrule
 	\emph{Ergodisches HMM} \quad Es kann aus jedem Zustand in jeder andere Zustand erreicht werden; A ist voll besetzt \\
-	\emph{Links-Rechts-HMM} \quad keine Rücksprünge; kausal; A hat rechte obere Dreiecksform; Graphisch nach rechts aufsteigend 
+	\emph{Links-Rechts-HMM} \quad keine Rücksprünge; kausal; A hat rechte obere Dreiecksform; Graphisch nach rechts aufsteigend
 	\end{tablebox}
-	
+
 	\subsubsection{Klassifizierung mit HMM}
 	Pro Klasse ein HMM; das HMM welches die größte Produktionswahrscheinlichkeit $p(o|\lambda_k)$ liefert, repräsentiert die gesuchte Klasse $k_x$;
-	 
+
 	\subsubsection{Training von HMM}
 	Kompensation von Störungen; Bed.: geeignete Parameter $\lambda_k$; Training mit iterativen Verfahren; $\Ra$ Baum-Welch-Algorithmus
 \end{sectionbox}
@@ -516,21 +519,21 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 	\end{symbolbox}
 
 	\subsubsection{Modelle}
-	Einzelworterkenner vs. fließende Sprache; Phoneme, kleinste bedeutungsunterscheidenden Lauteinheiten; HMM pro Phonem; Pausen; 
+	Einzelworterkenner vs. fließende Sprache; Phoneme, kleinste bedeutungsunterscheidenden Lauteinheiten; HMM pro Phonem; Pausen;
 
 	\subsubsection{Training}
-	Zusammenfassung der Phonem HMM zu einem HMM; 
+	Zusammenfassung der Phonem HMM zu einem HMM;
 
 	\subsubsection{Erkennung}
-	Wörterbücher, Grammatiken, Wahrscheinlichkeiten bestimmter Phonemkombinationen, Sprachmodelle für Wortkombinationen; 
+	Wörterbücher, Grammatiken, Wahrscheinlichkeiten bestimmter Phonemkombinationen, Sprachmodelle für Wortkombinationen;
 \end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{HMM-Algorithmen}
-	
+
 	\subsubsection{Trellis}
-	Mathematische Formel zur Berechnung der Beobachtungswkt.\\ 
-	Für verschiedene Wege $q$ gilt: \\ 
+	Mathematische Formel zur Berechnung der Beobachtungswkt.\\
+	Für verschiedene Wege $q$ gilt: \\
 	$p(\vec o, \vec q | \lambda_k) = e_{q1} b_{q1} (o_1) \prod\limits^T _{t=2} a_{q_{t-1} q_t} b_{q_t} (o_t)$
 	Beobachtungswahscheinlichkeit:
 	\begin{equation*}
@@ -540,13 +543,13 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 	\end{aligned}
 	\end{equation*}
 	Benötigte OPS $\sim 2T \cdot N^T$ (sehr rechenintensiv)\\
-	
+
 	\subsubsection{Vorwärts-Algorithmus}
 	Vorwärts-Wahrscheinlichkeit:
 
 	$\alpha_t (i) = \P(o_1, o_2, \dots , o_t , q_t = s_i | \lambda_k)$
 
-	d.h. die Wahrscheinlichkeit, dass die Teilbeobachtung $o_i$ emittiert werden und das sich das HMM zu t im Zustand $s_i$ befindet; 
+	d.h. die Wahrscheinlichkeit, dass die Teilbeobachtung $o_i$ emittiert werden und das sich das HMM zu t im Zustand $s_i$ befindet;
 
 	\begin{cookbox}{Vorwärts-Algorithmus (Rekursiv)}
 		\item Initialisierung: \\
@@ -564,7 +567,7 @@ Statistischer Klassifikator. Liefert Wahscheinlichkeit $p$, dass eine Beobachtun
 \subsubsection{Baum-Welch-Algorithmus}
 Rückwärtswahrscheinlichkeit:
 
- $\beta_t(i) = P(o_{t+1}, o_{t+2}, \dots , o_{T} | q_t = s_i , \lambda _k)$; 
+ $\beta_t(i) = P(o_{t+1}, o_{t+2}, \dots , o_{T} | q_t = s_i , \lambda _k)$;
 
 d.h. Wahrscheinlichkeit, die restlichen Teilbeob. zu emmttieren;
 
@@ -575,13 +578,13 @@ d.h. Wahrscheinlichkeit, die restlichen Teilbeob. zu emmttieren;
 		$\beta_t(i) = \sum\limits_{j=1}^N a_{ij} b_j (o_{t+1}) \beta_{t+1} (j)$\\
 		$t = T-1, T-2, \dots 1 \quad 1 \leq i \leq N$\\
 \end{cookbox}
- 
+
 Wahrscheinlichkeit, dass sich dass HMM zu t im Zustand $s_i$ befindet und o emmitiert wird; Summe drüber $\Ra$  "`alle Aufenthalte im Zustand $s_i$"'
 \begin{equation*}
 \gamma _t (i) = \frac{\alpha_t (i) \beta_t (i)}{\sum \limits_{i=1}^N \alpha_t (i) \beta_t (i)}
 \end{equation*}
 
-Wahrscheinlichkeit, dass sich das HMM zu t in $s_i$ und zu t+1 in $s_j$ befindet; Summe drüber $\Ra$ "`aller Übergänge von $s_i$ zu $s_j$; 
+Wahrscheinlichkeit, dass sich das HMM zu t in $s_i$ und zu t+1 in $s_j$ befindet; Summe drüber $\Ra$ "`aller Übergänge von $s_i$ zu $s_j$;
 \begin{equation*}
 \begin{split}
 &\xi_t (i,j) = \frac{\alpha _t (i) a_{ij} b_j (o_{t+1}) \beta_{t+1}(j)}{\sum \limits_{i=1}^N \alpha_t (i) \beta_t (i)}\\
@@ -660,7 +663,7 @@ Berechnet die Beobachtungswahscheinlichkeit des wahrscheinlichsten Pfades.
 	\item bis Liste leer / Ziel erreicht: \\ -prüfe erstes Element auf Zielknoten \textcolor{darkgreen}{bzw. max. Suchtiefe} \\-wenn ja, fertig \\ - wenn nein, entferne dieses Element und füge all seine Nachfolger \textcolor{darkgreen}{ an gleicher Stelle} / \textcolor{red}{am Ende} ein.
 \end{enumerate}
 
-Vorraussetzung: Elemente der Warteliste werden systematisch erzeugt; Suchtiefe wird geeignet groß festgesetzt / ausgewertete Suchbaum muss gespeichert werden; 
+Vorraussetzung: Elemente der Warteliste werden systematisch erzeugt; Suchtiefe wird geeignet groß festgesetzt / ausgewertete Suchbaum muss gespeichert werden;
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -683,12 +686,12 @@ Schätzfunktion $h(n)$ monoton, d.h. Kosten werden nicht überschätzt; terminie
 
 \section{Logik und Theorembeweisen}
 \begin{symbolbox}
-Wissen algorithmisch darstellen; Fakten ableiten; Behauptungen bestätigen / widerlegen; 
+Wissen algorithmisch darstellen; Fakten ableiten; Behauptungen bestätigen / widerlegen;
 \end{symbolbox}
 
 \begin{sectionbox}
 \subsection{Aussagenlogik}
-atomare Aussagen; wahr oder falsch; UND , ODER, NICHT; Implikation $\Rightarrow$; 
+atomare Aussagen; wahr oder falsch; UND , ODER, NICHT; Implikation $\Rightarrow$;
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -698,7 +701,7 @@ Analyse und Bewertung von Beziehungen und logischen Verknüpfungen\\
 Prädikate und Funktionen, Konstanten, Variablen, Funktionen, Negation, Disjunktion, Konjunktion, Existenz-Quantor, All-Quantor, Implikation, Äquivalenz.\\\\
 Beispiel: "`In jeder Stadt gibt es einen Bürgermeister"' \\
 $(\forall x) \left\{ \text{Stadt}(x)  \Rightarrow (\exists y) \left[ \text{Mensch}(y) \cdot \text{Bgm}(x,y) \right] \right\}$\\\\
-Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem); Beweis durch Wahrheitstabelle oder Umformen der Regeln und Schlussfolgern (Resolution, Unifikation - effektiver); 
+Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem); Beweis durch Wahrheitstabelle oder Umformen der Regeln und Schlussfolgern (Resolution, Unifikation - effektiver);
 \end{sectionbox}
 
 \begin{emphbox}
@@ -710,12 +713,12 @@ Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem);
 	\item Assoziativität $A + (B + C) \equiv (A + B) + C$
 	\item Distributivität $A + (B \cdot C) \equiv (A + B) \cdot (A + C)$
 	\item De Morgan $\neg(A \cdot B) \equiv \neg A + \neg B$
-	\item Kontrapositiv $A \Rightarrow B \equiv \neg B \Rightarrow \neg A$ 
-	\item $ A \Rightarrow B \equiv \neg A + B$ 
+	\item Kontrapositiv $A \Rightarrow B \equiv \neg B \Rightarrow \neg A$
+	\item $ A \Rightarrow B \equiv \neg A + B$
 	\item $ A \Leftrightarrow B \equiv (A \Rightarrow B ) \cdot (B \Ra A) \equiv (A \cdot B) + (\neg A \cdot \neg B) $
-	\item $ \neg (\forall x)A(x) \equiv (\exists x)(\neg A(x))$ 
-	\item $ \neg (\exists x) A(x) \equiv (\forall x) (\neg{}A(x)) $ 
-	\item $ (\forall x)(A(x) \cdot B(x)) \equiv (\forall x)A(x) \cdot (\forall y )B(y)$ 
+	\item $ \neg (\forall x)A(x) \equiv (\exists x)(\neg A(x))$
+	\item $ \neg (\exists x) A(x) \equiv (\forall x) (\neg{}A(x)) $
+	\item $ (\forall x)(A(x) \cdot B(x)) \equiv (\forall x)A(x) \cdot (\forall y )B(y)$
 	\item $ (\exists x)(A(x) + B(x)) \equiv (\exists x)A(x) + (\exists y)B(y)$
 \end{enumerate}
 \end{emphbox}
@@ -767,8 +770,8 @@ Weitere Sonderfälle:
 \end{aligned}
 \end{equation*}
 
-% Gegeben sind zwei Formel der Form: 
-% 
+% Gegeben sind zwei Formel der Form:
+%
 % \begin{equation*}
 % \begin{split}
 % 	A_1 + A_2 + \dots + A_n + \textcolor{red}{ P } \\
@@ -786,13 +789,13 @@ Erklärung: Statt Beweis wird Unerfüllbarkeit seines Gegenteils gezeigt.
 \begin{cookbox}{Tautologie beweisen: }
 	\item Wahrheit auf KNF bringen
 	\item Gegenteil auf KNF bringen
-	\item Zeige, dass Gegenteil \{ \} ist. 
+	\item Zeige, dass Gegenteil \{ \} ist.
 \end{cookbox}
 \end{sectionbox}
 
 \section{Wissensrepräsentation}
 \begin{symbolbox}
-	effizient speichern; strukturiert darstellen; Menge von Fakten, Regeln, Prozeduren, Modellen, Daten, Heuristiken; interpretierbar mit Hilfe von Repräsentationsmechanismen; 
+	effizient speichern; strukturiert darstellen; Menge von Fakten, Regeln, Prozeduren, Modellen, Daten, Heuristiken; interpretierbar mit Hilfe von Repräsentationsmechanismen;
 \end{symbolbox}
 
 \begin{sectionbox}
@@ -812,7 +815,7 @@ keine Umformung in KNF; Wenn-Dann bleibt erhalten; Vorwärts- Rückwärtsverkett
 % 	\item Back to \#2
 % 	\item Wenn keine neuen Regeln mehr feuern, überprüfen ob ein Ziel erfüllt wurde
 % \end{cookbox}
-% 
+%
 % \begin{cookbox}{Rückwärtsverkettung}
 % 	\item Vorgabe eines möglichen Ziels
 % 	\item Untersuchen der Bedingungen die zum erreichen dieses Ziels erfüllt sein müssen
@@ -824,14 +827,14 @@ keine Umformung in KNF; Wenn-Dann bleibt erhalten; Vorwärts- Rückwärtsverkett
 
 \begin{sectionbox}
 \subsection{Semantische Netze}
-Graphische Modelle zur Darstellung von Wissen über beziehungen zw. Objekten; entsprechen etwa Fakten der Prädikatenlogik; Knoten = Objekte; Kanten = Prädikate; Verwendung bei natürlichssprachigen Systemen; keine 2 Knoten gleicher Beschriftung; Richtung der Kanten von Bedeutung; 
+Graphische Modelle zur Darstellung von Wissen über beziehungen zw. Objekten; entsprechen etwa Fakten der Prädikatenlogik; Knoten = Objekte; Kanten = Prädikate; Verwendung bei natürlichssprachigen Systemen; keine 2 Knoten gleicher Beschriftung; Richtung der Kanten von Bedeutung;
 \end{sectionbox}
 
 \begin{sectionbox}
 \subsection{Rahmen}
 Darstellung der Zerlegung von Objekten oder Situationen in ihre Bestandteile; Ähnlichkeit zu semantischen Netzen, wesentlich mächtiger und flexibler; FrameName - zentraler Knoten, Slots - Kanten, Filler - Knoten; \\
 1. Suchverfahren zur Ermittlung von Beziehungen; \\
-2. "`Rahmen-Abgleich"'; Fakten als Fragezeichen markiert; mit aktuellen Daten auffüllen; 
+2. "`Rahmen-Abgleich"'; Fakten als Fragezeichen markiert; mit aktuellen Daten auffüllen;
 \end{sectionbox}
 
 % SECTION 5: HANDSCHRIFTERKENNUNG ======================================
@@ -861,9 +864,9 @@ Darstellung der Zerlegung von Objekten oder Situationen in ihre Bestandteile; Ä
 			\item Neuabtastung $\Ra$ ortsäquidistante Abtastpunkte $\vec x_{re}[k]$
 		\end{cookbox}
 
-		Länge einer Kurve $\vec r(t) = (x(t),y(t))^T$:\\ 
+		Länge einer Kurve $\vec r(t) = (x(t),y(t))^T$:\\
 		$L(a,b) = \int \limits_a^b \sqrt{(\frac{\diff x(t)}{\diff t})^2 + (\frac{\diff y(t)}{\diff t})^2} \diff t$\\
-		
+
 		Druckkomponente: $p_n = p_1 + k\cdot(p_2 - p_1)$
 \end{sectionbox}
 
@@ -882,7 +885,7 @@ Darstellung der Zerlegung von Objekten oder Situationen in ihre Bestandteile; Ä
 		$m=\frac{\sum \limits_{i=1}^{N}[(x_i - \ol x) (y_i - \ol y)]}{\sum \limits_{i=1}^{N} (x_i - \ol x)^2}$ und $b= \ol y - m \ol x$\\
 		Rotation:\\
 		$\vec x_{skew}[k] = \mat{ \cos \alpha_0 & -\sin \alpha_0 & 0 \\ \sin \alpha_0 & \cos \alpha_0 & 0 \\ 0&0&1} (\vec x_{re}[k] - \vec m)+ \vec m$\\
-		
+
 
 		\begin{cookbox}{Schriftneigung (slant)}
 			\item Scherung der Schrift an der Grundlinie $y_S$
@@ -900,7 +903,7 @@ Darstellung der Zerlegung von Objekten oder Situationen in ihre Bestandteile; Ä
 				\item Berechnung der Kernhöhe
 				\item Normirung des Schriftzuges
 			\end{cookbox}
-			
+
 			W: Höhe der Bins, P: Projektionsprofil\\
 			Oberlängenlinie: $y_{ober} = y_{max}$, Unterlängenlinie: $y_{unter} = y_{min}$\\
 			Kernlinie: $y_{kern}  = \text{argmin}(\frac{\diff}{\diff j}P_y(j))-0.5)W+ y_{min}$\\
@@ -908,7 +911,7 @@ Darstellung der Zerlegung von Objekten oder Situationen in ihre Bestandteile; Ä
 			Kernhöhe: $h_{kern} = |y_{kern}-y_{grund}|$\\
 			Normierung:\\
 			$\vec x_{norm}[k] = \frac{1}{h_{kern}} \mat{x[k] - x_{min} \\ y[k] - (y_{grund} + \frac{h_{kern}}{2})}$
-			
+
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -922,7 +925,7 @@ $\Delta x = x_{norm}[k+1]-x_{norm}[k]$, $\Delta y = y_{norm}[k+1]-y_{norm}[k]$\\
 		$\Delta \theta[k] = \theta[k+1]-\theta[k]$\\
 		5-dim. Merkmalsvektor:
 		$\vec m[k] = \mat{\sin(\theta[k]) \\ \cos(\theta[k]) \\ \sin(\Delta \theta[k]) \\ \cos(\Delta \theta[k]) \\ p[k]}$
-		
+
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -938,12 +941,12 @@ $\Delta x = x_{norm}[k+1]-x_{norm}[k]$, $\Delta y = y_{norm}[k+1]-y_{norm}[k]$\\
 \section{Dialogsystem (Anhang)}
 \begin{symbolbox}
 \begin{itemize}
-	\item fortgeschrittene intuitive Ein-/Ausgabetechniken 
+	\item fortgeschrittene intuitive Ein-/Ausgabetechniken
 	\item Hohes Maß an Interaktivität durch Benutzerfreundlichkeit und ausgeprägte Dialogfähigkeit
-	\item Intelligentes Systemverhalten, selbstständig logische Schlüsse ziehen; 
+	\item Intelligentes Systemverhalten, selbstständig logische Schlüsse ziehen;
 \end{itemize}
 \end{symbolbox}
-Teilgebiete der KI: Maschinelles Lernen, Bildverstehende Systeme, Expertensysteme, Robotik, Logik und automatisches Beweisen, natürlichsprachliche Systeme; 
+Teilgebiete der KI: Maschinelles Lernen, Bildverstehende Systeme, Expertensysteme, Robotik, Logik und automatisches Beweisen, natürlichsprachliche Systeme;
 
 
 
