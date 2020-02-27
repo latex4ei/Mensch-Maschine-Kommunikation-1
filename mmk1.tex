@@ -337,7 +337,31 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 		\item Für jeden Endzustand $s_E$ erstelle Produktionsregel,\\
 		z.B. für B als Endzustand $\Ra P = \{\dots,B\ra \epsilon\}$
 	\end{cookbox}
-	\vspace{-1em}\paragraph{Beispiel für einen deterministischen Zustandsautomaten}\ \\
+
+	\vspace{-1em}\paragraph{Endliche Zustandsautomaten}
+	Automat mit endlicher Menge von Zuständen $S$
+
+	\vspace{-1em}\paragraph{Deterministische Zustandsautomaten}
+	Automat, in dem die Folgezustände immer \emph{eindeutig} definiert sind durch den aktuellen Zustand und Eingabesymbol \\
+
+	\parbox{0.5\textwidth}{
+		\emph{Deterministisch}:
+		\begin{center}
+			\includegraphics[width=0.3\textwidth]{zustandsautomat}
+		\end{center}
+	}
+	\parbox{0.5\textwidth}{
+		\emph{Nicht Deterministisch}:
+		\begin{center}
+			\includegraphics[width=0.3\textwidth]{zustandsautomat_nicht_det}
+		\end{center}
+	}
+	\parbox{0.5\textwidth}{
+	Transitionsregeln in Tabellenform:
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{transitionsregeln_tab}
+	\end{center}
+	}
 	\parbox{0.5\textwidth}{
 		\begin{equation*}
 			\begin{aligned}
@@ -347,13 +371,6 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 			\end{aligned}
 		\end{equation*}
 	}
-	\parbox{0.4\textwidth}{
-		\includegraphics[width=0.3\textwidth]{zustandsautomat}
-	}\\
-	Transitionsregeln in Tabellenform: \\
-	\includegraphics[width=0.4\textwidth]{transitionsregeln_tab}
-	\vspace{-1em}\paragraph{Beispiel für einen nicht-deterministischen Zustandsautomaten}\ \\
-	\includegraphics[width=0.3\textwidth]{zustandsautomat_nicht_det}
 
 \end{sectionbox}
 
@@ -361,17 +378,23 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 	\subsection{Kellerautomaten}
 	Komplexere Grammatiken; Erweiterung mit Stack (LIFO-Queue); Transition abhängig von Stack und Eingang; Stack leer $\Ra$ Folge akzeptiert;
 	\begin{equation*}
-	Z = (\mathcal S, \mathcal X, \mathcal Y, \ma T, s_0, y_0 \mathcal F)
+	Z = (\mathcal S, \mathcal X, \mathcal Y, \ma T, s_0, y_0, \mathcal F)
 	\end{equation*}
 	\begin{itemize}
-		\item $\mathcal S$ Set mit endlicher Anzahl Zustände
-		\item $\mathcal X$ zulässiges Alphabet für die zu verarbeitende Symbolfolge X
 		\item $\mathcal Y$ zulässiges Alphabet für den Stack
-		\item $\ma T$ Transitionsfunktionen für die Zustände in $\mathcal S$
-		\item $s_0$ Anfangszustand
 		\item $y_0$ Startsymbol für den Stack
 		\item $\mathcal F$ ein Set von festgelegten Endzuständen (leer wenn Endzustand über leeren Stack definiert ist)
+		\item (Für $\mathcal S$, $\mathcal X$, $\ma T$, $s_0$ siehe Zustandsautomat)
 	\end{itemize}
+
+	\vspace{-1em}\paragraph{Aktionen:}
+	\begin{itemize}
+		\item $\text{push}(x)$ lege $x$ auf den Stack
+		\item $\text{pop}()$ lese und entferne oberste Stack-Element
+		\item $\varepsilon$ keine Aktion
+		\item $\#$ leeres Stack (\emph{erster} und \emph{letzter} Schritt)
+	\end{itemize}
+
 	\vspace{-1em}\paragraph{Beispiel für einen Kellerautomaten:}\ \\
 	\parbox{0.5\textwidth}{
 		\begin{equation*}
@@ -386,10 +409,10 @@ Kompression: Mithörschwelle über Verdeckungen ermitteln; MP3 ab 160 kBit/s.
 	}
 	\parbox{0.5\textwidth}{
 		\includegraphics[width=0.5\textwidth]{kellerautomat}
-	}\\
+	}
 	Generiert Sprache: $L(a^nb^n)$ mit $n>0$
 	\vspace{-1em}\paragraph{Angaben in Klammern:}\ \\
-	(Voraussetzung auf Stack $\in \mathcal Y$, Eingabe $\in \mathcal X$, Aktion push($\dots$)/pop)
+	(Voraussetzung auf Stack $\in \mathcal Y$, Eingabe $\in \mathcal X$, Aktion)
 \end{sectionbox}
 
 \columnbreak
