@@ -433,12 +433,12 @@ Spracherkennung beschäftigt sich mit der Untersuchung und Entwicklung von Verfa
 	Gewichtsmatrix $W_k$ entscheidend über Ergebnis; $m_k$ wird im Training ermittelt; $x$ gehört zur Klasse k mit minimalen Abstand;
 	\vspace{-1em}\paragraph{Quadratischer Abstand} $W_k$ ist Einheitsmatrix; Trennfunktion ist eine Gerade;
 	\vspace{-1em}\paragraph{Mahalanobis Abstand} Inverse der Kovarianzmatrix; Abhängig von Klasse; Bestandteil des Trainings; Trennfunktion ist Kegelschnitt (Gerade, Ellipse, Parabel, Hyperbel).
-
 	\begin{equation*}
-	\begin{split}
-		& \ma W_{K,k} = \frac{1}{M_k} \sum\limits^{M_k}_{i=1} \vec r_{k,i} \cdot r^T_{k,i} \quad -m_k \cdot m_k^T \\
-		& A^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
-	\end{split}
+	\begin{aligned}
+		\ma C_k &= \left( \frac{1}{M_k} \sum\limits^{M_k}_{i=1} \vec r_{k,i} \cdot r^T_{k,i} - m_k \cdot m_k^T \right) \\
+		\ma W_k &= \ma C_k^{-1} \\
+		A^{-1} &= \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
+	\end{aligned}
 	\end{equation*}
 \end{sectionbox}
 
