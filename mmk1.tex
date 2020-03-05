@@ -725,17 +725,17 @@ Prädikate und Funktionen, Konstanten, Variablen, Funktionen, Negation, Disjunkt
 Beispiel: "`In jeder Stadt gibt es einen Bürgermeister"' \\
 $(\forall x) \left\{ \text{Stadt}(x)  \Rightarrow (\exists y) \left[ \text{Mensch}(y) \cdot \text{Bgm}(x,y) \right] \right\}$\\\\
 Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem); Beweis durch Wahrheitstabelle oder Umformen der Regeln und Schlussfolgern (Resolution, Unifikation - effektiver);
-\end{sectionbox}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{truth_table}
+	\end{center}
 
-\begin{emphbox}
-\emph{Umformregeln:}
-\begin{enumerate}
+\begin{cookbox}{Umformregeln}
 	\item Doppelte Negation $\neg \neg A \equiv A$
 	\item Idempotenz $ A + A \equiv A$ und $ A \cdot A \equiv A$
-	\item Kommutativität $A + B \equiv B + A$
-	\item Assoziativität $A + (B + C) \equiv (A + B) + C$
-	\item Distributivität $A + (B \cdot C) \equiv (A + B) \cdot (A + C)$
-	\item De Morgan $\neg(A \cdot B) \equiv \neg A + \neg B$
+	\item Kommutativität $A + B \equiv B + A$ und $A \cdot B \equiv B \cdot A$ 
+	\item Assoziativität $A + (B + C) \equiv (A + B) + C$ und \\ $A \cdot (B \cdot C) \equiv (A \cdot B) \cdot C$
+	\item Distributivität $A + (B \cdot C) \equiv (A + B) \cdot (A + C)$ und \\ $A \cdot (B + C) \equiv (A \cdot B) + (A \cdot C)$
+	\item De Morgan $\neg(A \cdot B) \equiv \neg A + \neg B$ und \\ $\neg(A + B) \equiv \neg A \cdot \neg B$
 	\item Kontrapositiv $A \Rightarrow B \equiv \neg B \Rightarrow \neg A$
 	\item $ A \Rightarrow B \equiv \neg A + B$
 	\item $ A \Leftrightarrow B \equiv (A \Rightarrow B ) \cdot (B \Ra A) \equiv (A \cdot B) + (\neg A \cdot \neg B) $
@@ -743,13 +743,15 @@ Regeln und Zusammenhänge aufstellen; $\Ra$ Regelwerk (Axiome); Frage (Theorem);
 	\item $ \neg (\exists x) A(x) \equiv (\forall x) (\neg{}A(x)) $
 	\item $ (\forall x)(A(x) \cdot B(x)) \equiv (\forall x)A(x) \cdot (\forall y )B(y)$
 	\item $ (\exists x)(A(x) + B(x)) \equiv (\exists x)A(x) + (\exists y)B(y)$
-\end{enumerate}
-\end{emphbox}
+\end{cookbox}
+\end{sectionbox}
 
 \begin{sectionbox}
 \subsection{Standardformen}
-Konjunktive Normalform (KNF): $(A_1 + A_2 + \dots) \cdot (B_1 + B_2 + \dots) \cdot \dots$ \\
-Disjunktive Normalform: $(A_1 \cdot A_2 \cdot \dots) + (B_1 \cdot B_2 \cdot \dots) + \dots$
+Konjunktive Normalform (KNF): \\
+$(A_1 + A_2 + \dots) \cdot (B_1 + B_2 + \dots) \cdot \dots$ \\
+Disjunktive Normalform (DNF): \\
+$(A_1 \cdot A_2 \cdot \dots) + (B_1 \cdot B_2 \cdot \dots) + \dots$
 \begin{cookbox}{Regeln zur Umformung in Normalform:}
 %\begin{enumerate}
 	\item Eliminierung aller Äquivalenzen (\# 9)
@@ -809,10 +811,11 @@ Geg.: Set von $n$ existierenden und bewiesenen Axiomen $\mathcal S = \left\{S_1 
 Vorgehen: Erweiterung von $\mathcal S $ zu $\mathcal S^* = \left\{S_1 \dots S_n , \neg T \right\}$ Und Resolutionieren bis leere Klausel erzeugt wird. \\
 Erklärung: Statt Beweis wird Unerfüllbarkeit seines Gegenteils gezeigt.
 
-\begin{cookbox}{Tautologie beweisen: }
-	\item Wahrheit auf KNF bringen
-	\item Gegenteil auf KNF bringen
-	\item Zeige, dass Gegenteil \{ \} ist.
+\begin{cookbox}{Tautologie beweisen}
+	\item[] Beweis durch Widerspruch: $\neg w \equiv f$:
+	\item Negiere Aussage
+	\item Bringe Aussage in KNF
+	\item Zeige Kontradiktion
 \end{cookbox}
 \end{sectionbox}
 
